@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaotik Anahtarlar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .banner {
+            width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .container, .file-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .image-link {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .image-link img {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .image-link img:hover {
+            transform: scale(1.1);
+        }
+        .file-container a {
+            display: block;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .file-container a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kaotik Anahtarlar</h1>
+    <img src="banner.jpg" alt="Şifreleme Temalı Banner" class="banner">
+    
+    <h2>Şifreleme ile İlgili Resimler</h2>
+    <div class="container" id="imageContainer">
+        <!-- Resimler buraya yüklenecek -->
+    </div>
+    
+    <h2>Excel Dosyaları</h2>
+    <div class="file-container" id="fileContainer">
+        <!-- Excel dosya linkleri buraya yüklenecek -->
+    </div>
+
+    <script>
+        // Resim dosyalarını listele
+        const images = ["sonuc1.jpg"]; // Resim dosya adlarını ekleyin
+        const imageContainer = document.getElementById("imageContainer");
+        
+        images.forEach(image => {
+            let linkElement = document.createElement("a");
+            linkElement.href = image;
+            linkElement.target = "_blank";
+            linkElement.className = "image-link";
+            
+            let imgElement = document.createElement("img");
+            imgElement.src = image;
+            imgElement.alt = "Şifreleme Resmi";
+            
+            linkElement.appendChild(imgElement);
+            linkElement.appendChild(document.createTextNode(image));
+            imageContainer.appendChild(linkElement);
+        });
+        
+        // Excel dosyalarını listele
+        const excelFiles = ["LFSR.xlsx"]; // Excel dosya adlarını ekleyin
+        const fileContainer = document.getElementById("fileContainer");
+        
+        excelFiles.forEach(file => {
+            let linkElement = document.createElement("a");
+            linkElement.href = file;
+            linkElement.download = file;
+            linkElement.innerText = file;
+            fileContainer.appendChild(linkElement);
+        });
+    </script>
+</body>
+</html>
